@@ -4,7 +4,7 @@
 
 Clone the repo
 
-## Implement Stopwatch
+## Implement Stopwatch
 In Stopwatch.js, you'll see that there's some functionality missing.
 
 1. First, change the clock face so that it shows the time formatted as `<minutes>:<seconds>.<centiseconds>` derived from centiseconds. 
@@ -15,7 +15,7 @@ In Stopwatch.js, you'll see that there's some functionality missing.
 
 3. Add functionality to the start/stop button. This should stop the stopwatch if it's running and start it if it's stopped.
 
-## Implement Timer
+## Implement Timer
 In TimerInput.js, you'll see that there's some functionality missing.
 
 1. Make sure the values update when values are changed in the `Input` function
