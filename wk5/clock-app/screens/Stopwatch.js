@@ -20,8 +20,12 @@ export default function Stopwatch() {
   // startTime stores the time the stopwatch started.
   const [startTime, setStartTime] = useState(0);
 
-  // TODO: Use an Effect to update time on the stopwatch.
-  // useEffect(() => {});
+  // TODO: Add function to setTimeout to make useEffect work.
+  useEffect(() => {
+    if (isCounting) {
+      setTimeout(() => undefined, 10);
+    }
+  });
   
   if (!fontsLoaded) {
     return (
@@ -38,11 +42,10 @@ export default function Stopwatch() {
           <Text style={styles.digits}>00:00.00</Text>
         </View>
         <View style={styles.buttonContainer}>
-          {/* TODO: Add functionality to the reset button. It should reset time to 0. */}
           <Button
             style={{backgroundColor: "#60615f"}}
             title="Reset" 
-            onPress={() => undefined } />
+            onPress={() => (setStartStop(false), setTimeout(() => setCentisecs(0), 10)) } />
           {/* TODO: Add functionality to the start/stop button. */}
           <Button 
             style={{backgroundColor: isCounting ? "#ed3b53" : "#60bd31"}}
