@@ -2,7 +2,17 @@
 
 ## Getting Started
 
-Clone the repo
+1. Download/clone this repo
+
+2. Navigate to this directory and install dependencies
+
+```
+cd CMP3035/wk5/clock-app
+npm install
+```
+
+3. Start app: `npx expo start --tunnel`
+
 
 ## Implement Stopwatch
 In Stopwatch.js, you'll see that there's some functionality missing.
