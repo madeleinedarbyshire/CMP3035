@@ -17,6 +17,9 @@ export default function Stopwatch() {
   // isCounting controls whether the stopwatch is on/off. 
   const [isCounting, setStartStop] = useState(false);
 
+  // startTime stores the time the stopwatch started.
+  const [startTime, setStartTime] = useState(0);
+
   // TODO: Use an Effect to update time on the stopwatch.
   // useEffect(() => {});
   

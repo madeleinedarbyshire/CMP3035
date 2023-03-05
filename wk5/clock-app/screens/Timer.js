@@ -11,6 +11,9 @@ export default function Timer(props) {
   // Retrieve seconds from route params
   const [seconds, setSeconds] = useState(props.route.params.seconds);
 
+  // startTime stores the time the timer started.
+  const [startTime, setStartTime] = useState(0);
+
   // isPaused controls whether the timer is on/off
   const [isPaused, setPause] = useState(false);
   let [fontsLoaded] = useFonts({
