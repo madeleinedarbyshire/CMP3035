@@ -1,5 +1,39 @@
 # Clock App
 
+## Prerequistes
+
+### Node
+1. Check if node is installed on your machine with `node -v`
+2. Install node:
+    - On windows: https://nodejs.org/en/
+    - On mac: `brew install node`
+
+### Expo
+1. If you haven't already, sign up for an expo.io account https://expo.io/signup, confirm your details and log in.
+2. If you haven't already, get the Expo client app on your phone. Download the client for:
+	- [iOS](https://apps.apple.com/us/app/expo-go/id982107779)
+	- [Android](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_GB&gl=US&pli=1)
+3. Log in to the Expo client app 
+4. Install Expo CLI
+    ```
+    npm install expo-cli
+    ```
+5. Verify that the installation was successful using `npx expo whoami`
+
+![](/images/expo_whoami.png)
+
+6. Login with the credentials you created
+    ``` 
+    npx expo login -u your-username -p your-password
+    ```
+
+### ngrok
+1. Install the Expo ngrok plugin `npm install @expo/ngrok`
+
+2. Install ngrok
+    - Download Windows version from here: [ngrok.com/download](https://ngrok.com/download)
+    - On Mac: `brew install ngrok`
+
 ## Getting Started
 
 1. Download/clone this repo
