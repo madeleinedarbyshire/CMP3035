@@ -26,7 +26,7 @@ In TimerInput.js, you'll see that there's some functionality missing.
 
 In Timer.js, you'll see that there's some functionality missing.
 
-1. Format timer time as <hours>:<minutes>:<seconds> .
+1. Format timer time as `<hours>:<minutes>:<seconds>` .
 
 2. Add functionality to the reset button. Reset should navigate the user back to the `TimerInput` page.
 
