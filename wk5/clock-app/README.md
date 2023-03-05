@@ -17,22 +17,29 @@ npm install
 ## Implement Stopwatch
 In Stopwatch.js, you'll see that there's some functionality missing.
 
-1. First, change the clock face so that it shows the time formatted as `<minutes>:<seconds>.<centiseconds>` derived from centiseconds. 
-    - Hint 1: there 100 centiseconds in a second.
+1. First, change the clock face so that it shows the time formatted as `<minutes>:<seconds>.<centiseconds>` derived from `centisecs`. 
+    - Hint 1: there are 100 centiseconds in a second.
     - Hint 2: you will need to use the modulo function `%` and the floor function `Math.floor` (there's no need to import `Math`).
+    - Hint 3: to test you've got the maths right, try setting the initial state to `const [centisecs, setCentisecs] = useState(8015);` and your clockface should show `1:20.15`.
 
-2. Add functionality to the reset button. This should stop the stopwatch (if it's running) and set it back to 0.
+2. Add functionality to the start/stop button. This should stop the stopwatch if it's running and start it if it's stopped. It should also set the startTime.
+    - Hint 1: set the `onPress` property to a function that sets `isCounting` and `startTime` to the right values using the setter functions `setStartStop` and `setStartTime` respectively.
+    - Hint 2: `startTime` should be set to `Date.now()` (there's no need to import Date) which gives the current time in milliseconds.
+    - Hint 3: You should be able to get some inspiration for how to do this by looking at the implementation of the reset button.
 
-3. Add functionality to the start/stop button. This should stop the stopwatch if it's running and start it if it's stopped.
+3. Define the function passed to useEffect to update the time.
+    - Naive approach: the naive approach here is to set `centisecs` to `centisecs + 1` after each timeout. Try this out and compare your results to Google's stopwatch - you'll notice some drift (i.e. you're stopwatch will be slower) after a few seconds.
+    - More robust approach: set `centisecs` to be the current time minus the start time in centiseconds after each timeout `Math.floor((Date.now() - startTime) / 10)` . This is less prone to drift.
 
 ## Implement Timer
 In TimerInput.js, you'll see that there's some functionality missing.
 
-1. Make sure the values update when values are changed in the `Input` function
+1. Make sure the values update when values are changed in the `Input` function. 
 
 2. Add functionality to the reset button. This reset all values in the inputs back to 0.
 
 3. Add functionality to the start button. It should navigate to the Timer screen.
+    - Hint: use the navtigate function from props.navigation defined at the top of the TimerInput function.
 
 In Timer.js, you'll see that there's some functionality missing.
 
