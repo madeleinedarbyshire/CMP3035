@@ -16,7 +16,7 @@
 3. Log in to the Expo client app 
 4. Install Expo CLI
     ```
-    npm install expo-cli
+    npm install expo
     ```
 5. Verify that the installation was successful using `npx expo whoami`
 
