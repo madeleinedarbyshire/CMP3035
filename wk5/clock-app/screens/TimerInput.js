@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     buttonContainer: {
       flex: 2,
       flexDirection: 'row',
-      justifyContent: 'start'
     },
     inputContainer: {
       flex: 3,
