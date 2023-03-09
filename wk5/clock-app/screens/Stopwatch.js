@@ -66,8 +66,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 2,
-    flexDirection: 'row',
-    justifyContent: 'start'
+    flexDirection: 'row'
   },
   clock: {
     flex: 3,
