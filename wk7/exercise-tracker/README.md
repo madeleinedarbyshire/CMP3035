@@ -1,14 +1,5 @@
 # Geolocation and Persitent Data
 
-## Getting Started
-1. Clone the repo.
-
-2. Install dependancies
-```
-cd CMP3035/wk7/exercise-tracker
-npm install
-```
-
 ## Google Cloud Platform Set Up
 1. Log into [Google Cloud Platform](https://console.cloud.google.com/home/dashboard) with your existing Google account (if you have one). Otherwise create a Google account and then log in.
 
@@ -25,9 +16,11 @@ npm install
 ## Google Maps Android API
 1. Select Maps SDK for Android
 
-2. Press Enable and accept terms and conditions. *The next screen will ask for your card details. You DO NOT need to do this.* They have made it difficult to navigate back to the dashboard from this page without entering your card details so follow this link back to [your dashboard](https://console.cloud.google.com/home/dashboard).
+2. Press Enable and accept terms and conditions.
 
 ![TCs](assets/tcs.png)
+
+**The next screen will ask for your card details. You DO NOT need to do this.** They have made it difficult to navigate back to the dashboard from this page without entering your card details so follow this link back to [your dashboard](https://console.cloud.google.com/home/dashboard).
 
 ![Stop Payment](assets/stoppay.png)
 
@@ -45,13 +38,24 @@ npm install
 
 ![Android Restrictions](assets/androidres.png)
 
-6. Under Android restrictions, press add. Add your unique package name (something like "com.uol.exercise") and generate a key for the os you are using and copy the result into the fingerprint.
+6. (OPTIONAL: *you need to have a bunch of config that comes with android studio to make this work, if you are not on a lab machine and don't have this installed on your machine, don't worry about it for today*) Under Android restrictions, press add. 
+
+    6.1 Add your unique package name (something like "com.uol.exercise")
+    6.2 Generate a key with the follow command
+    ```
+    keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+    ```
+    6.3 Copy the result into the fingerprint.
+
+    *Caveat 1: if you're not using lab machines, you might need to install Android studio to get all the configuration you need to run this. If you can't get this to work on your machine, don't worry about it for today.*
+    *Caveat 2: if you're using a lab machine, remember the fingerprint is unique to the Computing user so you'll need to change the restriction for it to work on other machines*
 
 ![Android Restrictions Package Name](assets/packagename.png)
 
 ![Android Restrictions Keystore](assets/keystore.png)
 
-5. Copy your API key and paste it into your app json with your bundle ID.
+6. Copy your API key and paste it into your app json with your bundle ID.
+
 ```javascript
 "android": {
     "package": "com.uol.exercise",
@@ -64,9 +68,11 @@ npm install
 
 ![APIs](assets/library.png)
 
-2. Press Enable and accept terms and conditions. *The next screen will ask for your card details. You DO NOT need to do this.* They have made it difficult to navigate back to the dashboard from this page without entering your card details so follow this link back to [your dashboard](https://console.cloud.google.com/home/dashboard).
+2. Press Enable and accept terms and conditions.
 
 ![TCs](assets/tcs.png)
+
+*The next screen will ask for your card details. You DO NOT need to do this.* They have made it difficult to navigate back to the dashboard from this page without entering your card details so follow this link back to [your dashboard](https://console.cloud.google.com/home/dashboard).
 
 ![Stop Payment](assets/stoppay.png)
 
@@ -99,9 +105,15 @@ npm install
     }
 ```
 
-## Install react-maps
-1. Install react-native-maps `expo install react-native-maps`
+## Getting Started
+1. Clone the repo.
 
+2. Install dependancies
+```
+cd CMP3035/wk7/exercise-tracker
+npm install
+npx expo start --tunnel
+```
 
 ## Implement History Page
 1. To start with, there won't be any routes in the history so since there's nothing there we will add a `demoRoutes` to the history. In `retrieveHistory`, if `AsyncStorage.getItem('routes')` returns `null`, use `AsyncStorage.setItem` to save demoRoutes under the key 'routes' in Async Storage and then call `retrieveHistory`. Note: since `demoRoutes` is an object you will have to use `JSON.stringfy`.
