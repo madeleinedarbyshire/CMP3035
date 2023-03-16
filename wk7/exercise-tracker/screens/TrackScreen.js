@@ -63,6 +63,7 @@ export default function TrackScreen({ navigation }) {
       Alert('please add a route name');
       return;
     }
+    //TODO: Get watch id from navigator.geolocation.watchPosition and set this using setWatchID
     navigator.geolocation.watchPosition(onGeolocation, onGeolocationError, geolocationPositionOpts)
     setWatchID();
   };
