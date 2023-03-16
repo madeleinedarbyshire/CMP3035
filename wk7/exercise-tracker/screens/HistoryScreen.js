@@ -19,7 +19,7 @@ export default function HistoryScreen({ route, navigation }) {
     try {
       const value = await AsyncStorage.getItem('routes');
       if (value === null) {
-        // TODO: use AsyncStorage.setItem to save demoRoutes under the key 'routes' in Async Storage and then call retrieveRoutes. 
+        // TODO: use AsyncStorage.setItem to save demoRoutes under the key 'routes' in Async Storage and then call retrieveHistory. 
       }
       else {
         // TODO: set the value under the key 'routes' in AsyncStorage as the history.
