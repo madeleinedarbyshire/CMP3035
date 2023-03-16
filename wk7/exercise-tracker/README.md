@@ -13,6 +13,7 @@ npm install
 1. Log into [Google Cloud Platform](https://console.cloud.google.com/home/dashboard) with your existing Google account (if you have one). Otherwise create a Google account and then log in.
 
 2. Once you log in select Create Project.
+![Create Project](assets/create_project.png)
 
 3. Name your project and select Create.
 
