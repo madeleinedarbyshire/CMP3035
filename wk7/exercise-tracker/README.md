@@ -82,5 +82,7 @@ npm install
 
 5. In stopTracking, stop monitoring by invoking `navigator.geolocation.clearWatch`, calling storeRoute, and resetting the state.
 
-6. Use AsyncStorage.setItem to save the route in storage. Remember to use `JSON.stringfy` to convert the object to a string.
+6. Make the 'Stop' button stop tracking.
+
+7. Use AsyncStorage.setItem to save the route in storage. Remember to use `JSON.stringfy` to convert the object to a string.
 
