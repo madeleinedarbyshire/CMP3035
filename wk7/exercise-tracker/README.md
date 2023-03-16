@@ -49,7 +49,7 @@ npm install
 
 ![Android Restrictions](assets/androidres.png)
 
-6. Under Android restrictions, press add. 
+6. (OPTIONAL: *you need to have a bunch of config that comes with android studio to make this work, if you are not on a lab machine and don't have this installed on your machine, don't worry about it for today*) Under Android restrictions, press add. 
 
     6.1 Add your unique package name (something like "com.uol.exercise")
     6.2 Generate a key with the follow command
