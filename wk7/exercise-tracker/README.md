@@ -119,10 +119,6 @@ npm install
     }
 ```
 
-## Install react-maps
-1. Install react-native-maps `expo install react-native-maps`
-
-
 ## Implement History Page
 1. To start with, there won't be any routes in the history so since there's nothing there we will add a `demoRoutes` to the history. In `retrieveHistory`, if `AsyncStorage.getItem('routes')` returns `null`, use `AsyncStorage.setItem` to save demoRoutes under the key 'routes' in Async Storage and then call `retrieveHistory`. Note: since `demoRoutes` is an object you will have to use `JSON.stringfy`.
 
