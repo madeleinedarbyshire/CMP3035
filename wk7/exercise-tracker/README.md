@@ -17,33 +17,82 @@ npm install
 
 3. Name your project and select Create.
 
-4. In the left side bar, select APIs & Services on the left side bar and select Library from the menu.
+4. Back on the dashboard, in the left side bar, select APIs & Services on the left side bar and select Library from the menu.
+![APIs](assets/apis.png)
+
+5. Now follow the instructions to enable to the Google Maps API on either Android or iOS.
 
 ## Google Maps Android API
 1. Select Maps SDK for Android
 
-2. Press Enable and accept terms and conditions. *The next screen will ask for your card details. You DO NOT need to do this.* They have made it difficult to navigate back to the dashboard from this page without entering your card details so you might need follow this link back to [your dashboard](https://console.cloud.google.com/home/dashboard).
+2. Press Enable and accept terms and conditions. *The next screen will ask for your card details. You DO NOT need to do this.* They have made it difficult to navigate back to the dashboard from this page without entering your card details so follow this link back to [your dashboard](https://console.cloud.google.com/home/dashboard).
 
-3. From the dashboard, go to side menu and under APIs & Services go to credentials. At the top of the page select +Create Credentials. 
+![TCs](assets/tcs.png)
 
-## Google Maps iOS API
-1. Select Maps SDK for Android
-
-2. Press Enable and accept terms and conditions. *The next screen will ask for your card details. You DO NOT need to do this.* They have made it difficult to navigate back to the dashboard from this page without entering your card details so you might need follow this link back to [your dashboard](https://console.cloud.google.com/home/dashboard).
+![Stop Payment](assets/stoppay.png)
 
 3. From the dashboard, go to side menu and under APIs & Services go to credentials. At the top of the page select +Create Credentials then API Key.
 
-4. Click on the API key you've created to configure restrictions. 
+![Credentials](assets/creds1.png)
 
-5. Under set an application restriction, select iOS apps. Under API restrictions, select Restrict key. Under iOS restrictions, add the a bundle ID, something memorable but unique like com.uol.exercise42.
+![Credentials](assets/creds2.png)
+
+4. Go to the three dots on the key you've created and select Edit Key to configure restrictions. 
+
+![Edit Key](assets/editkey.png)
+
+5. Under set an application restriction, select Android apps. Under API restrictions, select Restrict key. At the drop-down that says Select APIs select Maps SDK for Android, select OK and press Save.
+
+![Android Restrictions](assets/androidres.png)
+
+6. Under Android restrictions, press add. Add your unique package name (something like "com.uol.exercise") and generate a key for the os you are using and copy the result into the fingerprint.
+
+![Android Restrictions Package Name](assets/packagename.png)
+
+![Android Restrictions Keystore](assets/keystore.png)
+
+5. Copy your API key and paste it into your app json with your bundle ID.
+```javascript
+"android": {
+    "package": "com.uol.exercise",
+    "config": {"googleMaps": {"apiKey": "AIzaSyBpwg_YOUR_API_KEY_boQ8NJBiVEcAUs" }}
+}
+```
+
+## Google Maps iOS API
+1. Select Maps SDK for iOS from the api library. It should be near the top.
+
+![APIs](assets/library.png)
+
+2. Press Enable and accept terms and conditions. *The next screen will ask for your card details. You DO NOT need to do this.* They have made it difficult to navigate back to the dashboard from this page without entering your card details so follow this link back to [your dashboard](https://console.cloud.google.com/home/dashboard).
+
+![TCs](assets/tcs.png)
+
+![Stop Payment](assets/stoppay.png)
+
+3. From the dashboard, go to side menu and under APIs & Services go to credentials. At the top of the page select +Create Credentials then API Key.
+
+![Credentials](assets/creds1.png)
+
+![Credentials](assets/creds2.png)
+
+4. Go to the three dots on the key you've created and select Edit Key to configure restrictions. 
+
+![Edit Key](assets/editkey.png)
+
+5. Under set an application restriction, select iOS apps. Under API restrictions, select Restrict key. Under iOS restrictions, add the a bundle ID, something memorable but unique like com.uol.exercise.
+
+![iOS Restrictions](assets/iosres.png)
 
 6. At the drop-down that says Select APIs select Maps SDK for iOS, select OK and press Save.
+
+![iOS Restrictions](assets/iosres2.png)
 
 5. Copy your API key and paste it into your app json with your bundle ID.
 ```javascript
 "ios": {
     "supportsTablet": true,
-    "bundleIdentifier": "com.uol.exercise42",
+    "bundleIdentifier": "com.uol.exercise",
     "config": {
         "googleMapsApiKey": "AIzaSyBpwg_YOUR_API_KEY_boQ8NJBiVEcAUs"
         }
