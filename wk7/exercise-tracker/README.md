@@ -1,14 +1,5 @@
 # Geolocation and Persitent Data
 
-## Getting Started
-1. Clone the repo.
-
-2. Install dependancies
-```
-cd CMP3035/wk7/exercise-tracker
-npm install
-```
-
 ## Google Cloud Platform Set Up
 1. Log into [Google Cloud Platform](https://console.cloud.google.com/home/dashboard) with your existing Google account (if you have one). Otherwise create a Google account and then log in.
 
@@ -114,8 +105,13 @@ npm install
     }
 ```
 
-## Start App
+## Getting Started
+1. Clone the repo.
+
+2. Install dependancies
 ```
+cd CMP3035/wk7/exercise-tracker
+npm install
 npx expo start --tunnel
 ```
 
