@@ -69,10 +69,8 @@ npm install
 
 
 ```javascript
-"android": {![image](https://user-images.githubusercontent.com/22774558/225606796-db9a98bf-0d18-4186-9202-f25445f31e9d.png)
-
-    "package": "com.uol.exercise",![image](https://user-images.githubusercontent.com/22774558/225606790-6276ddc7-4525-491f-9f7a-6eb4bd560694.png)
-
+"android": {
+    "package": "com.uol.exercise",
     "config": {"googleMaps": {"apiKey": "AIzaSyBpwg_YOUR_API_KEY_boQ8NJBiVEcAUs" }}
 }
 ```
