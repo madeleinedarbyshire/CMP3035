@@ -63,10 +63,7 @@ npm install
 
 ![Android Restrictions Keystore](assets/keystore.png)
 
-6. Copy your API key and paste it into your app json with your bundle ID.!
-7. [image](https://user-images.githubusercontent.com/22774558/225607127-5757bda8-6cd2-4d82-aa10-b49819da8873.png)!
-8. [image](https://user-images.githubusercontent.com/22774558/225607132-78dc4a66-1d22-4cdb-a25e-7bbceaa57da8.png)
-
+6. Copy your API key and paste it into your app json with your bundle ID.
 
 ```javascript
 "android": {
