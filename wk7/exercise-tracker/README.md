@@ -25,9 +25,11 @@ npm install
 ## Google Maps Android API
 1. Select Maps SDK for Android
 
-2. Press Enable and accept terms and conditions. *The next screen will ask for your card details. You DO NOT need to do this.* They have made it difficult to navigate back to the dashboard from this page without entering your card details so follow this link back to [your dashboard](https://console.cloud.google.com/home/dashboard).
+2. Press Enable and accept terms and conditions.
 
 ![TCs](assets/tcs.png)
+
+**The next screen will ask for your card details. You DO NOT need to do this.** They have made it difficult to navigate back to the dashboard from this page without entering your card details so follow this link back to [your dashboard](https://console.cloud.google.com/home/dashboard).
 
 ![Stop Payment](assets/stoppay.png)
 
@@ -37,7 +39,8 @@ npm install
 
 ![Credentials](assets/creds2.png)
 
-4. Go to the three dots on the key you've created and select Edit Key to configure restrictions. 
+4. Go to the three dots on the key you've created and select Edit Key to configure restrictions. ![image](https://user-images.githubusercontent.com/22774558/225607518-66e26874-04e3-4467-9118-3bba6892ede7.png)
+
 
 ![Edit Key](assets/editkey.png)
 
@@ -45,16 +48,20 @@ npm install
 
 ![Android Restrictions](assets/androidres.png)
 
-6. Under Android restrictions, press add. Add your unique package name (something like "com.uol.exercise") and generate a key for the os you are using and copy the result into the fingerprint.
+6. Under Android restrictions, press add. Add your unique package name (something like "com.uol.exercise") and generate a key, following the instructions for the os you are using, and copy the result into the fingerprint.
 
 ![Android Restrictions Package Name](assets/packagename.png)
 
 ![Android Restrictions Keystore](assets/keystore.png)
 
-5. Copy your API key and paste it into your app json with your bundle ID.
+5. Copy your API key and paste it into your app json with your bundle ID.![image](https://user-images.githubusercontent.com/22774558/225607127-5757bda8-6cd2-4d82-aa10-b49819da8873.png)![image](https://user-images.githubusercontent.com/22774558/225607132-78dc4a66-1d22-4cdb-a25e-7bbceaa57da8.png)
+
+
 ```javascript
-"android": {
-    "package": "com.uol.exercise",
+"android": {![image](https://user-images.githubusercontent.com/22774558/225606796-db9a98bf-0d18-4186-9202-f25445f31e9d.png)
+
+    "package": "com.uol.exercise",![image](https://user-images.githubusercontent.com/22774558/225606790-6276ddc7-4525-491f-9f7a-6eb4bd560694.png)
+
     "config": {"googleMaps": {"apiKey": "AIzaSyBpwg_YOUR_API_KEY_boQ8NJBiVEcAUs" }}
 }
 ```
@@ -64,9 +71,11 @@ npm install
 
 ![APIs](assets/library.png)
 
-2. Press Enable and accept terms and conditions. *The next screen will ask for your card details. You DO NOT need to do this.* They have made it difficult to navigate back to the dashboard from this page without entering your card details so follow this link back to [your dashboard](https://console.cloud.google.com/home/dashboard).
+2. Press Enable and accept terms and conditions.
 
 ![TCs](assets/tcs.png)
+
+*The next screen will ask for your card details. You DO NOT need to do this.* They have made it difficult to navigate back to the dashboard from this page without entering your card details so follow this link back to [your dashboard](https://console.cloud.google.com/home/dashboard).
 
 ![Stop Payment](assets/stoppay.png)
 
