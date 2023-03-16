@@ -1,0 +1,67 @@
+{
+  "Lincoln": [
+    {
+      "timestamp": 1678383193000,
+      "coords": {
+        "longitude": -0.544279,
+        "latitude": 53.226664
+      }
+    },
+    {
+      "timestamp": 1678383250000,
+      "coords": {
+        "longitude": -0.549027,
+        "latitude": 53.227855
+      }
+    },
+    {
+      "timestamp": 1678383300000,
+      "coords": {
+        "longitude": -0.549128,
+        "latitude": 53.227976
+      }
+    },
+    {
+      "timestamp": 1678383350000,
+      "coords": {
+        "longitude": -0.548734,
+        "latitude": 53.228507
+      }
+    },
+    {
+      "timestamp": 1678383400000,
+      "coords": {
+        "longitude": -0.546915,
+        "latitude": 53.228008
+      }
+    },
+    {
+      "timestamp": 1678383500000,
+      "coords": {
+        "longitude": -0.546687,
+        "latitude": 53.228063
+      }
+    },
+    {
+      "timestamp": 1678383550000,
+      "coords": {
+        "longitude": -0.546556,
+        "latitude": 53.22815
+      }
+    },
+    {
+      "timestamp": 1678383600000,
+      "coords": {
+        "longitude": -0.543826,
+        "latitude": 53.227356
+      }
+    },
+    {
+      "timestamp": 1678383650000,
+      "coords": {
+        "longitude": -0.544279,
+        "latitude": 53.226664
+      }
+    }
+  ]
+}

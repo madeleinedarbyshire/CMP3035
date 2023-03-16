@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "exercise-tracker",
+    "slug": "exercise-tracker",
+    "version": "1.0.0",
+    "platforms": ["ios", "android", "web"],
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": { 
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.uol.exercise",
+      "config": {
+        "googleMapsApiKey": "AIzaSyBeUixgGDtrXx79Q4ZmYLICSY22OS3lXjg" 
+      }
+    },
+    "android": {
+      "package": "com.uol.cpd",
+      "config": { 
+        "googleMaps": {
+          "apiKey": "AIzaSyA6LdaoQ8y-uAuNy_arvCxubpAEfFK9AfU"
+        }
+      },
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
