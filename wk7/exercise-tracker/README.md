@@ -49,7 +49,7 @@ npm install
 
 ![Android Restrictions](assets/androidres.png)
 
-6. (OPTIONAL) Under Android restrictions, press add. 
+6. Under Android restrictions, press add. 
 
     6.1 Add your unique package name (something like "com.uol.exercise")
     6.2 Generate a key with the follow command
@@ -58,7 +58,7 @@ npm install
     ```
     6.3 Copy the result into the fingerprint.
 
-    *Caveat 1: if you're not using lab machines, you might need to install Android studio to get all the configuration you need to run this.*
+    *Caveat 1: if you're not using lab machines, you might need to install Android studio to get all the configuration you need to run this. If you can't get this to work on your machine, don't worry about it for today.*
     *Caveat 2: if you're using a lab machine, remember the fingerprint is unique to the Computing user so you'll need to change the restriction for it to work on other machines*
 
 ![Android Restrictions Package Name](assets/packagename.png)
