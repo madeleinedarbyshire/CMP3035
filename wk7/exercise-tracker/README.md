@@ -141,7 +141,7 @@ npx expo start --tunnel
 ## Implement the Tracking page
 1. Implement onChangeText so that `text` is updated when the input changes.
 
-2. Get the set `id` as the watchID using setWatchID.
+2. Get watch id from `navigator.geolocation.watchPosition` and set the watchID in the setWatchID function.
 
 3. Make the 'Track' button start tracking.
 
