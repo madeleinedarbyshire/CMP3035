@@ -79,7 +79,8 @@ export default function TrackScreen({ navigation }) {
         <Divide />
         {watchID ?
           <Submit>
-            <TouchButton onPress={stopTracking}>
+            {/* TODO: Stop tracking when pressed */}
+            <TouchButton onPress={() => undefined}>
               <BtnText>STOP</BtnText>
             </TouchButton>
           </Submit>
@@ -87,6 +88,7 @@ export default function TrackScreen({ navigation }) {
           <View style={{ paddingLeft: "5%" }}> 
             <ItemsLayout>
               <Holder>
+                {/* TODO: Implement onChangeText */}
                 <TextInput
                   style={{
                     flex: 2,
@@ -100,7 +102,8 @@ export default function TrackScreen({ navigation }) {
                   onChangeText={(text) => undefined}
                 />
                 <Submit>
-                  <TouchButton onPress={startTracking}>
+                  {/* TODO: Start tracking when pressed */}
+                  <TouchButton onPress={() => undefined}>
                     <BtnText>Track</BtnText>
                   </TouchButton>
                 </Submit>
