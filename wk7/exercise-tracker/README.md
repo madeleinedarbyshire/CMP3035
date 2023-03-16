@@ -121,10 +121,9 @@ npx expo start --tunnel
 2. This next call to `retrieveHistory` should not be `null` and therefore you should be able to parse the result with `JSON.parse()` and set the resulting value as `history`.
 
 3. history has the structure 
-4. ```
-5. {'Lincoln' : [{'coords': {'latitude': 1, 'longitude': 1}, 'timestamp': 10} }, {'coords': {'latitude': 1, 'longitude': 1}, 'timestamp': 10} }, ....]
-6. ```
-
+```
+{'Lincoln' : [{'coords': {'latitude': 1, 'longitude': 1}, 'timestamp': 10} }, {'coords': {'latitude': 1, 'longitude': 1}, 'timestamp': 10} }, ....]
+```
 3. Now you have the data, you can display it:
     - Add the name of the route.
     - Add the date. Convert the timestamp using `timestampToDate` which takes a timestamp.
