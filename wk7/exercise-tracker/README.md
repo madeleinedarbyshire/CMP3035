@@ -40,8 +40,6 @@ npm install
 ![Credentials](assets/creds2.png)
 
 4. Go to the three dots on the key you've created and select Edit Key to configure restrictions. 
-5. ![image](https://user-images.githubusercontent.com/22774558/225607518-66e26874-04e3-4467-9118-3bba6892ede7.png)
-
 
 ![Edit Key](assets/editkey.png)
 
