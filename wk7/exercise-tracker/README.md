@@ -39,7 +39,8 @@ npm install
 
 ![Credentials](assets/creds2.png)
 
-4. Go to the three dots on the key you've created and select Edit Key to configure restrictions. ![image](https://user-images.githubusercontent.com/22774558/225607518-66e26874-04e3-4467-9118-3bba6892ede7.png)
+4. Go to the three dots on the key you've created and select Edit Key to configure restrictions. 
+5. ![image](https://user-images.githubusercontent.com/22774558/225607518-66e26874-04e3-4467-9118-3bba6892ede7.png)
 
 
 ![Edit Key](assets/editkey.png)
@@ -48,13 +49,25 @@ npm install
 
 ![Android Restrictions](assets/androidres.png)
 
-6. Under Android restrictions, press add. Add your unique package name (something like "com.uol.exercise") and generate a key, following the instructions for the os you are using, and copy the result into the fingerprint.
+6. (OPTIONAL) Under Android restrictions, press add. 
+
+    6.1 Add your unique package name (something like "com.uol.exercise")
+    6.2 Generate a key with the follow command
+    ```
+    keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+    ```
+    6.3 Copy the result into the fingerprint.
+
+    *Caveat 1: if you're not using lab machines, you might need to install Android studio to get all the configuration you need to run this.*
+    *Caveat 2: if you're using a lab machine, remember the fingerprint is unique to the Computing user so you'll need to change the restriction for it to work on other machines*
 
 ![Android Restrictions Package Name](assets/packagename.png)
 
 ![Android Restrictions Keystore](assets/keystore.png)
 
-5. Copy your API key and paste it into your app json with your bundle ID.![image](https://user-images.githubusercontent.com/22774558/225607127-5757bda8-6cd2-4d82-aa10-b49819da8873.png)![image](https://user-images.githubusercontent.com/22774558/225607132-78dc4a66-1d22-4cdb-a25e-7bbceaa57da8.png)
+6. Copy your API key and paste it into your app json with your bundle ID.!
+7. [image](https://user-images.githubusercontent.com/22774558/225607127-5757bda8-6cd2-4d82-aa10-b49819da8873.png)!
+8. [image](https://user-images.githubusercontent.com/22774558/225607132-78dc4a66-1d22-4cdb-a25e-7bbceaa57da8.png)
 
 
 ```javascript
