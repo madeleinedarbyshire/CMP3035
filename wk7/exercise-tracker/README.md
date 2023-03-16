@@ -120,11 +120,16 @@ npx expo start --tunnel
 
 2. This next call to `retrieveHistory` should not be `null` and therefore you should be able to parse the result with `JSON.parse()` and set the resulting value as `history`.
 
+3. history has the structure 
+4. ```
+5. {'Lincoln' : [{'coords': {'latitude': 1, 'longitude': 1}, 'timestamp': 10} }, {'coords': {'latitude': 1, 'longitude': 1}, 'timestamp': 10} }, ....]
+6. ```
+
 3. Now you have the data, you can display it:
     - Add the name of the route.
-    - Add the date. Convert the timestamp using `timestampToDate`.
-    - Add the distance. Calculate the distance from the routes using `calculateDistance`.
-    - Add the duration. Calculate the duration from the routes using `calculateTime`.
+    - Add the date. Convert the timestamp using `timestampToDate` which takes a timestamp.
+    - Add the distance. Calculate the distance from the routes using `calculateDistance` which takes a list of objects like `{'coords': {'latitude': 1, 'longitude': 1}, 'timestamp': 10}`.
+    - Add the duration. Calculate the duration from the routes using `calculateTime` which takes a list of objects like `{'coords': {'latitude': 1, 'longitude': 1}, 'timestamp': 10}`..
 
 4. Provide a function to `onPress` such that pressing on a row navigates to the Map screen with the route coords as a parameter.
 
@@ -136,15 +141,11 @@ npx expo start --tunnel
 ## Implement the Tracking page
 1. Implement onChangeText so that `text` is updated when the input changes.
 
-2. Use `navigator.geolocation.watchPosition` to start monitoring position changes. Provide callbacks onGeolocation and onGeolocationError as well geolocationPositionOpts to the function.
+2. Get the set `id` as the watchID using setWatchID.
 
 3. Make the 'Track' button start tracking.
 
-4. In onGeolocation, append the latest position to trackingData.
+4. Make the 'Stop' button stop tracking.
 
-5. In stopTracking, stop monitoring by invoking `navigator.geolocation.clearWatch`, calling storeRoute, and resetting the state.
-
-6. Make the 'Stop' button stop tracking.
-
-7. Use AsyncStorage.setItem to save the route in storage. Remember to use `JSON.stringfy` to convert the object to a string.
+5. Use AsyncStorage.setItem to save the route in storage. Remember to use `JSON.stringfy` to convert the object to a string.
 
