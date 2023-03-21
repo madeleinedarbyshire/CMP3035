@@ -293,12 +293,13 @@ To use styled components:
     ```
 
 3. The icon once again is stacked under the text. To fix this we add `position: absolute`
+
     ```jsx
     <Ionicons
         name="md-cart"
         size={32}
         color={colours.red}
-        style={{ position: 'absolute', right: 20, top: 5 }}
+        style={% raw %}{{ position: 'absolute', right: 20, top: 5 }}{% endraw %}
     /> 
     ```
 
@@ -397,12 +398,12 @@ This list is right now not scrollable. To make it scrollable, let us place it in
     ```jsx
     <ScrollView
         horizontal={true}
-        style={{
+        style={% raw %}{{
             padding: 20,
             paddingLeft: 12,
             paddingTop: 30,
             flexDirection: 'row'
-        }}
+        }}{% endraw %}
         showsHorizontalScrollIndicator={false}>
         {items.map((category, index) => (
             <Categories name={category.text} key={index} />
@@ -510,7 +511,7 @@ const Subtitle = styled.Text`
     b. In case of networking images or getting an image from an API, you use the same prop with a different keyword called uri. Here is an example of an image being fetched from an API.
 
     ```jsx
-    <Image source={{uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}} />
+    <Image source={% raw %}{{uri: "https://facebook.github.io/react-native/docs/assets/favicon.png"}}{% endraw %} />
     ```
 
 5. The Cover view uses rounded corners with overflow property. This is done to reflect the rounded corners. iOS clips the images if coming from a child component. In our case, the image is coming from a Card component which is a child to App component. The Image component takes the width and height of entire Cover view. Now let us import this component inside App.js file, after the Subtitle and let us see what results do we get. Note the props cardtitle, cardstrength, cardsrc.
