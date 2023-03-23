@@ -20,24 +20,15 @@ npm install expo-cli
 npm install @expo/ngrok@^4.1.0
 ```
 
-4. Verify the Expo install using `npx expo whoami`.
-
-5. Login with the credentials you created:
-``` 
-npx expo login -u <your-username> -p <your-password>
-```
-
-6. From the root of your expo project, install the Expo ngrok plugin `npm install @expo/ngrok`.
-
-7. Start your app! `npx expo start --tunnel`
+4. Start your app! `npx expo start --tunnel`
 
 ## Add Navigation
-1. Create a new folder called 'screens'
+1. Create a new folder in the root of your app called 'screens'
 ```
 mkdir screens
 ```
 
-2. Make a 2 new .js files under screens called CameraScreen.js and GalleryScreen.js.
+2. Make two new .js files under screens called CameraScreen.js and GalleryScreen.js.
 
 3. Copy the contents of App.js into CameraScreen.js and GalleryScreen.js but in each change `export default function App()` to `export default function CameraScreen()` and `export default function GalleryScreen()` respectively and change the `<Text>` component to say "Camera page" and "Gallery page". For example, the CameraScreen page will look like:
 ```jsx
@@ -51,12 +42,12 @@ export default function CameraScreen() {
 }
 ```
 
-4. Install `@react-navigation/native` and `@react-navigation/bottom-tabs`
+4. Install [@react-navigation/native](https://reactnavigation.org/docs/getting-started/) and [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/)
   ```
   npm install @react-navigation/native @react-navigation/bottom-tabs
   ```
 
-5. Delete the contents of App.js.
+5. Now delete the contents of App.js.
 
 6. Import the libraries you just installed into App.js:
 ```javascript
@@ -99,7 +90,7 @@ export default function App() {
 }
 ```
 
-11. Now another `Tab.Screen` component so that your GalleryScreen page is available from the bottom tab navigator. Check your tabs are working by making sure the text changes when you change tabs.
+11. Now add another `Tab.Screen` component so that your GalleryScreen page is available from the bottom tab navigator. Check your tabs are working by making sure the text changes when you change tabs.
 
 ## Render the Camera
 1. Install the following libraries:
@@ -107,7 +98,7 @@ export default function App() {
 npm install expo-camera expo-file-system
 ```
 
-2. Import the libraries you've just installed into CameraScreen.js
+2. Import the libraries you've just installed into CameraScreen.js as well as the `useState` and `useEffect` hooks:
 ```javascript
 import { useState, useEffect } from 'react';
 import { Camera, CameraType } from "expo-camera";
@@ -174,8 +165,8 @@ const cameraRef = useRef(null);
 7. Add a `Button` component underneath the `Camera` component that calls a `takePicture` function `onPress`. Remember you will have to import the `Button` component from `'react-native'` 
 ```jsx
 return (
-    <View style={{flex : 1}}>
-      <Camera style={{flex : 1}} ref={cameraRef} type={CameraType.front}/>
+    <View style={% raw %}{{flex : 1}}{% endraw %}>
+      <Camera style={% raw %}{{flex : 1}}{% endraw %} ref={cameraRef} type={CameraType.front}/>
       <Button title="Capture Photo" onPress={takePicture}/>
     </View>
 );
@@ -215,12 +206,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import PhotoScreen from './screens/PhotoScreen';
 ```
 
-5. Define a stack navigator for the Camera page.  Since we want to navigate to the PhotoScreen after taking a Photo in the CameraScreen.
+5. Define a stack navigator for the Camera page in App.js.  Since we want to navigate to the PhotoScreen after taking a Photo in the CameraScreen, define Camera above Photo.
 ```jsx
 const CameraStack = () => {
   const Stack = createStackNavigator();
   return (
-      <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Navigator>
           <Stack.Screen name="Camera" component={CameraScreen}></Stack.Screen>
           <Stack.Screen name="Photo" component={PhotoScreen}></Stack.Screen>
       </Stack.Navigator>
@@ -253,19 +244,19 @@ options={% raw %}{{tabBarLabel: "Camera"}}{% endraw %}
     <Tab.Navigator screenOptions={% raw %}{{headerShown: false}}{% endraw %}>
   ```
 
-10. In CameraScreen.js, inside takePicture(), after you've saved the image the PHOTOS_DIR navigate to the Photo page we've just created.
+10. In CameraScreen.js, inside takePicture(), after you've saved the image in PHOTOS_DIR navigate to the Photo page we've just created.
 ```js
 props.navigation.navigate("Photo", {uri: saveURI})
 ```
 
 11. In PhotoScreen.js, update your `Image` component so that `source` property is `props.route.params.uri`.
 
-12. Still not working? Add set the `style` property on `Image` to be `style={{flex: 1}}`.
+12. Still not working? Set the `style` property on `Image` to be `style={% raw %}{{flex: 1}}{% endraw %}`.
 
 You should now see your photo!
 
 ## Share your photo
-1. In the lecture, I discussed the [React Native Share API]() but this doesn't appear to support file sharing on android so instead we are going to use the [Expo Sharing API](https://docs.expo.dev/versions/latest/sdk/sharing). Install it with the following command:
+1. In the lecture, I discussed the [React Native Share API](https://reactnative.dev/docs/share) but this doesn't appear to support file sharing on android so instead we are going to use the [Expo Sharing API](https://docs.expo.dev/versions/latest/sdk/sharing). Install it with the following command:
 ```
 npx expo install expo-sharing
 ```
@@ -275,7 +266,7 @@ npx expo install expo-sharing
 import * as Sharing from 'expo-sharing';
 ```
 
-3. Add a `Button` underneath `Image` and wrap both components in a `View`. You will need to set `style={{flex: 1}}` on the `View` component. Remember to import the View and `Button` components.
+3. Add a `Button` underneath `Image` and wrap both components in a `View`. You will need to set `style={% raw %}{{flex: 1}}{% endraw %}` on the `View` component. Remember to import the View and `Button` components.
   ```jsx
     <Button title="Share" onPress={onShare}/>
   ```
@@ -292,7 +283,7 @@ npm install expo-media-library
 
 2. Define an async function called onSave.
   - Request permissions using [MediaLibrary.requestPermissionsAsync](https://docs.expo.dev/versions/latest/sdk/media-library/#medialibraryrequestpermissionsasyncwriteonly). You only need writeOnly permissions.
-  - From MediaLibrary.requestPermissionsAsync, you will get an object with a `status` attribute if `status === 'granted'`, write the photo to the camera roll using [MediaLibrary.createAssetAsync](https://docs.expo.dev/versions/latest/sdk/media-library/#medialibrarycreateassetasynclocaluri)
+  - From MediaLibrary.requestPermissionsAsync, you will get an object with a `status` attribute and if `status === 'granted'`, write the photo to the camera roll using [MediaLibrary.createAssetAsync](https://docs.expo.dev/versions/latest/sdk/media-library/#medialibrarycreateassetasynclocaluri)
 
 Check your camera roll for your image.
 
@@ -324,8 +315,9 @@ const Row = ({ photos }) => {
 6. Define some basic styling for these components:
 ```jsx
 const styles = StyleSheet.create({
-  row: {flexDirection: 'row', flex: 1},
-  image: {flex: 1, margin: 10}
+  container: {paddingVertical: 20},
+  row: {flexDirection: 'row', flex: 1, marginRight: 5},
+  image: {height: 170, resizeMode: 'contain', marginLeft: 5, marginBottom: 5, flexShrink: 1, flexGrow: 1}
 });
 ```
 
@@ -354,3 +346,22 @@ for (let i = 0; i < (photos.length / rowWidth) + 1; i++) {
 11. Wrap the `Image` component in `TouchableOpacity` and give the property `onPress` on `TouchableOpacity` a function that navigates to the Photo page.
 
 You've done it! You've made a Camera app from scratch.
+
+## Extension 1: Style Buttons and Tab Bar
+Style the app as you like.
+
+1. Styling the button component in React Native can be a bit limited so instead you might perfer to create a custom component and wrap it in a `TouchableOpacity`. See an example in the clock-app/components/buttons.js.
+
+2. You can change the icons shown on the TabBar:
+  - Install [expo-vector-icons](https://www.npmjs.com/package/@expo/vector-icons) and import `MaterialCommunityIcons`, `FontAwesome` or another icon library
+  - Choose your prefer icons from [here](https://icons.expo.fyi/)
+  - Update the `options` property with a function to 
+
+  ```jsx
+  tabBarIcon: ({ color, size }) => (
+      <MaterialCommunityIcons name="camera" size={24} color="black" />
+  )
+  ```
+
+## Extension 2: Implement the Smile Detector
+Look at this week's lecture slides and try to implement the smile detector in Camera.js.
