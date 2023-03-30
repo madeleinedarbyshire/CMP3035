@@ -19,9 +19,8 @@ permalink: guides/firebase
 ![Google Analytics](../assets/firestore/ganalytics2.png)
 
 5. In the console, select Cloud Firestore and then select Create database
-![Firestore](../assets/firestore/firestore.png)
-
-![Create Firestore](../assets/firestore/create_firestore.png)
+    ![Firestore](../assets/firestore/firestore.png)
+    ![Create Firestore](../assets/firestore/create_firestore.png)
 
 6. Select Start in Test Mode, then press next
 ![Test Mode](../assets/firestore/test_mode.png)
