@@ -19,7 +19,7 @@ permalink: workshops/workshop9
 3. Clone the repo, install the dependencies and run the app.
 ```
 git clone https://github.com/madeleinedarbyshire/CMP3035
-cd CMP3035/wk9/photo-share
+cd CMP3035/wk9/firestore
 npm install
 npx expo start --tunnel
 ```
