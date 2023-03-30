@@ -31,7 +31,7 @@ permalink: guides/firebase
 8. Return to console
 ![Console](../assets/firestore/console.png)
 
-9. To get the credentials you need for web app, go to the cog and select Project Settings from the drop down. Under your apps you will see a blue button with angle brackets. Register your project name when prompted.
+9. To get the credentials you need for web app, go to the cog and select Project Settings from the drop down. Under your apps you will see a blue button with angle brackets, click here and register your project name when prompted.
 
     ![Project Settings](../assets/firestore/project_settings.png)
     ![Project Settings](../assets/firestore/blue_button.png)
