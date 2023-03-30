@@ -3,6 +3,7 @@ layout: page
 exclude: true
 title: "Workshop 1: Intro to React Native, Expo and Styling"
 excerpt: "This week we made our first app with React Native."
+permalink: workshops/workshop1
 ---
 
 ## Node

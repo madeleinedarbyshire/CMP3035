@@ -3,6 +3,7 @@ layout: page
 exclude: true
 title: "Workshop 8: Build a Photobooth app from Scratch"
 excerpt: "This week we look at how to use the camera with a photobooth app"
+permalink: workshops/workshop8
 ---
 
 ## Create app template

@@ -37,6 +37,8 @@ plugins:
 collections:
   workshops:
     output: true
+  guides:
+    output: true
 
 show_excerpts: true
 
