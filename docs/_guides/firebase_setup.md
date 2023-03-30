@@ -32,7 +32,7 @@ permalink: guides/firebase
 ![Console](../assets/firestore/console.png)
 
 9. To get the credentials you need for web app, go to the cog and select Project Settings from the drop down. Under your apps you will see a blue button with angle brackets. Add your project name when prompted.
-![Project Settings](../assets/firestore/blue_button.png)
+    ![Project Settings](../assets/firestore/project_settings.png)
+    ![Project Settings](../assets/firestore/blue_button.png)
 
 10. From this page, copy `firebaseConfig`.
-![Project Settings](../assets/firestore/project_settings.png)
