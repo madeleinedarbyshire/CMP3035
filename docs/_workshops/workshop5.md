@@ -6,23 +6,23 @@ excerpt: "Create a Firestore database using Firebase"
 permalink: workshops/workshop9
 ---
 
-1. Set up firebase following [this guide](/guides/firebase)
-
-2. Create a collection called Observations. You will need to add at least one document to the collection to complete the setup of the collection so I suggest you use my template observation with the following fields:
-    - title: Pink Sky
-    - description: A pink sky over Brayford Campus
-    - date: [choose a date]
-    - image: [Copy the contents of pink_sky.txt (using CTRL-A) and paste it into the image field]
-
-    ![First Document](../assets/firestore/first_document.png)
-
-3. Clone the repo, install the dependencies and run the app.
+1. Clone the repo, install the dependencies and run the app.
 ```
 git clone https://github.com/madeleinedarbyshire/CMP3035
 cd CMP3035/wk9/firestore
 npm install
 npx expo start --tunnel
 ```
+
+2. Set up firebase following [this guide](/guides/firebase)
+
+3. Create a collection called Observations. You will need to add at least one document to the collection to complete the setup of the collection so I suggest you use my template observation with the following fields:
+    - title: Pink Sky
+    - description: A pink sky over Brayford Campus
+    - date: [choose any date]
+    - image: [I have provided a base64 text encoded image you can use to populate this field at CMP3035/wk9/pink_sky.txt. Select all contents (using CTRL-A) and copy and paste it into the image field]
+
+    ![First Document](../assets/firestore/first_document.png)
 
 4. From the Firebase dashboard, go to the cog next to Project Overview and get your `firebaseConfig` out of this and paste this into components/Firebase.js.
 
