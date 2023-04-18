@@ -22,16 +22,18 @@ layout: base
     <ul class="post-list">
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
       {%- for workshop in workshops -%}
-      <li>
-        <h3>
-          <a class="post-link" href="{{ workshop.url | relative_url }}">
-            {{ workshop.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ workshop.excerpt }}
-        {%- endif -%}
-      </li>
+        {% unless workshop.hidden %}
+        <li>
+          <h3>
+            <a class="post-link" href="{{ workshop.url | relative_url }}">
+              {{ workshop.title | escape }}
+            </a>
+          </h3>
+          {%- if site.show_excerpts -%}
+            {{ workshop.excerpt }}
+          {%- endif -%}
+        </li>
+        {% endunless %}
       {%- endfor -%}
     </ul>
 
