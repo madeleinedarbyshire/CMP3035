@@ -1,7 +1,6 @@
 ---
 layout: page
 exclude: true
-hidden: true
 title: "Workshop 10: Communicating with Spotify's REST API"
 excerpt: "Retrieve album art and song snippets from Spotify's REST API"
 permalink: workshops/workshop10
