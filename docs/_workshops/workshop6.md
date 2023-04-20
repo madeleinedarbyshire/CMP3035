@@ -38,7 +38,7 @@ npx create-expo-app
 3. Install expo and ngrok:
 ```
 cd <your-app>
-npm install expo
+npm install expo-cli
 npm install @expo/ngrok@^4.1.0
 npm install @expo/vector-icons
 ```
