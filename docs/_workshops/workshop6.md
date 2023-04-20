@@ -21,6 +21,12 @@ permalink: workshops/workshop10
 
     ![Register App](../assets/spotify/register.png)
 
+5. From the dashboard, select your app and then go to settings to find your Client ID and Client Secret.
+
+    ![Dashboard](../assets/spotify/dashboard2.png)
+
+    ![Dashboard](../assets/spotify/settings.png)
+
 ## Create App
 1. Create a new app:
 ```
