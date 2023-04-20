@@ -48,7 +48,7 @@ npm install @expo/vector-icons
 npx expo start --tunnel
 ```
 
-5. Copy the components directory from the GitHub repo and add it to the root of your project.
+5. Copy the components directory from the [GitHub repo](https://github.com/madeleinedarbyshire/CMP3035/tree/main/wk10/components) and add it to the root of your project.
 
 6. Delete the contents of App.js and replace it with:
     ```jsx
