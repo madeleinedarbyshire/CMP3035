@@ -71,7 +71,7 @@ permalink: workshops/workshop1
 ![run on pixel device](../assets/workshop1/android_studio_emulator.png)
 
 ## Hello World!
-1. Open your favourite editor, or something like VSCode or atom, and change the text in `<Text>` to 'Hello World!'
+1. Open your favourite editor, or something like VSCode or atom, and change the text in `<Text>` in _App.js_ to 'Hello World!'
 
 2. Check to see if the text in your app has changed!
 
@@ -728,6 +728,8 @@ You should be able to use gestures to navigate back but to make it easier for us
 ![with all](../assets/workshop1/with_all_characteristics.png)
 
 5. Extension: Can you figure out how to display the characteristics in two columns?
+
+![with two columns](../assets/workshop1/two_columns.jpeg)
 
 ## Check How Your App Looks on Different Devices
 In Android studio, go to create device and try running the app on different devices and check the UI still looks ok.
