@@ -6,6 +6,16 @@ excerpt: "This week we made our first app with React Native."
 permalink: workshops/workshop1
 ---
 
+<style type="text/css">
+  img { max-height: 500px;
+        border-style: solid;
+        border-width: thin;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+</style>
+
 ## Node
 1. Check if node is installed on your machine with `node -v`.
 2. If it's not, install node:
