@@ -287,7 +287,7 @@ Here we are going to add some color to the app. Color's here are defined by a ha
     });
     ```
 
-6. Set the `style` property on the `Text` component in `Categories` to be `styles.name`.
+6. Set the `style` property on the `Text` component in `Category` to be `styles.name`.
 
 7. Now you can try importing the function into _App.js_
 
@@ -433,7 +433,7 @@ This list is right now not scrollable. To make it scrollable, let us place it in
     <Text style={styles.subtitle}>Your Heroes</Text>
     <ScrollView>
       {items.map((category, index) => (
-        <Categories name={category.text} key={index} />
+        <Category name={category.text} key={index} />
       ))}
     </ScrollView>
     ```
