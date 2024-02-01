@@ -352,7 +352,7 @@ Here we are going to add some color to the app. Color's here are defined by a ha
       ];
     ```
 
-2. Use [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) to map over this list, replace <Category /> with:
+2. Use [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) to map over this list, replace <Category /> in _App.js_ with:
     ```jsx
     {
       items.map((category, index) => (
