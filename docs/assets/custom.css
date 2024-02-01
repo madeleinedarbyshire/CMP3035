@@ -1,0 +1,6 @@
+img { max-height: 500px;
+      border-style: solid;
+      border-width: thin;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;}

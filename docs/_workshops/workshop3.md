@@ -4,6 +4,7 @@ exclude: true
 title: "Workshop 7: Geolocation and Persitent Data"
 excerpt: "This week we look at how to use the geolocation and maps in React Native."
 permalink: workshops/workshop7
+hidden: true
 ---
 
 ## Google Cloud Platform Set Up

@@ -4,6 +4,7 @@ exclude: true
 title: "Workshop 6: Clock App"
 excerpt: "This week we look at how to use React hooks and navigate in React Native"
 permalink: workshops/workshop6
+hidden: true
 ---
 
 ## Prerequistes

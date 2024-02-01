@@ -4,6 +4,7 @@ exclude: true
 title: "Workshop 9: CRUD with Firebase"
 excerpt: "Create a Firestore database using Firebase"
 permalink: workshops/workshop9
+hidden: true
 ---
 
 1. Clone the repo, install the dependencies and run the app.
