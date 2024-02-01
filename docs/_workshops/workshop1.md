@@ -254,7 +254,7 @@ Here we are going to add some color to the app. Color's here are defined by a ha
 ## Exporting components
 1. Create a new folder at the root of your project called _components_ .
 
-2. Within that new folder, create a new file called _Categories.js_ .
+2. Within that new folder, create a new file called _Category.js_ .
 
 3. At the top of the file import the following in `'react-native'`:
 
