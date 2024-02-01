@@ -71,7 +71,7 @@ permalink: workshops/workshop1
 ![run on pixel device](../assets/workshop1/android_studio_emulator.png)
 
 ## Hello World!
-1. Open your favourite editor, or something like VSCode or atom, and change the text in `<Text>` in _App.js_ to 'Hello World!'
+1. Open the project folder in youe favourite editor, or something like VSCode or atom, and change the text in `<Text>` in _App.js_ to 'Hello World!'
 
 2. Check to see if the text in your app has changed!
 
