@@ -3,6 +3,7 @@ layout: page
 exclude: true
 title: "Publishing Your App"
 permalink: guides/publish
+hidden: true
 ---
 
 For your assignment, you will need to include a QR code we can use to run your apps. We are going to use Expo Publish but since this is a legacy package you will need to install expo-cli (as opposed to expo) to run it.
