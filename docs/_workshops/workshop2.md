@@ -262,7 +262,12 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
   }
   ```
 
-3. Now inside the container View below the clock View we will insert a panel of buttons
+3. Import the Button components you just defined:
+  ```javascript
+  import Button from '../components/button';
+  ```
+
+4. Now inside the container View below the clock View we will insert a panel of buttons
   ```jsx
     <View style={styles.buttonContainer}>
       <Button title="Start" />
@@ -270,7 +275,7 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
     </View>
   ```
 
-4. Add some buttonContainer styling to your StyleSheet
+5. Add some buttonContainer styling to your StyleSheet
   ```javascript
     buttonContainer: {
       flex: 2,
@@ -279,43 +284,43 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
   ```
   ![buttons](../assets/workshop2/buttons.png)
 
-5. In Stopwatch, on the Start button, set the onPress(), first by negating isCounting and then setting the start time to Date.now().
+6. In Stopwatch, on the Start button, set the onPress(), first by negating isCounting and then setting the start time to Date.now().
   ```javascript
   onPress={() => (setStartStop(!isCounting), setStartTime(Date.now()))}
   ```
 
-6. But wait, that still won't work because we need to do something with the onPress property in our custom button! In button.js, take the onPress property from props and set it as the onPress property on TouchableOpacity
+7. But wait, that still won't work because we need to do something with the onPress property in our custom button! In button.js, take the onPress property from props and set it as the onPress property on TouchableOpacity
   ```jsx
-  export default function Button(props) {
-    const { title, onPress } = props;
-    return(
-      <TouchableOpacity style={styles.button} onPress={ onPress } >
-        <Text style={styles.title}>{ title }</Text>
-      </TouchableOpacity>
-    );
-  }
+    export default function Button(props) {
+      const { title, onPress } = props;
+      return(
+        <TouchableOpacity style={styles.button} onPress={ onPress } >
+          <Text style={styles.title}>{ title }</Text>
+        </TouchableOpacity>
+      );
+    }
   ```
 
-7. You should be able to start and stop your clock _but_ the button always says "Start" so we can update the title property to make this conditional:
+8. You should be able to start and stop your clock _but_ the button always says "Start" so we can update the title property to make this conditional:
   ```jsx
   title={isCounting ? "Stop" : "Start"}
   ```
   ![buttons](../assets/workshop2/stop.png)
 
-8. Next head add some colours to the buttons. Once again, we want the color to change depending on whether the button is start or stop. If you don't like these colors, pick others you prefer using a [HTML color picker](https://g.co/kgs/v1AxwiY)
+9. Next head add some colours to the buttons. Once again, we want the color to change depending on whether the button is start or stop. If you don't like these colors, pick others you prefer using a [HTML color picker](https://g.co/kgs/v1AxwiY)
   ```jsx
   style={% raw %}{{backgroundColor: isCounting ? "#ed3b53" : "#60bd31"}}{% endraw %}
   ```
 
-9. Hmm nothing's changed? Once again we need to take this property and apply it in our custom Button. Pull out the style property and use the [StyleSheet.flatten()](https://reactnative.dev/docs/stylesheet#flatten) function to define buttonStyle.
+10. Hmm nothing's changed? Once again we need to take this property and apply it in our custom Button. Pull out the style property and use the [StyleSheet.flatten()](https://reactnative.dev/docs/stylesheet#flatten) function to define buttonStyle.
   ```javascript
   const { title, style, onPress } = props;
   const buttonStyle = StyleSheet.flatten([styles.button, style]);
   ```
 
-10. Now update the style property on TouchableOpacity to buttonStyle. Your button's colour should now update.
+11. Now update the style property on TouchableOpacity to buttonStyle. Your button's colour should now update.
   ```jsx
-    <TouchableOpacity style={styles.button} onPress={ onPress } >
+    <TouchableOpacity style={ buttonStyle } onPress={ onPress } >
   ```
 
 ![buttons](../assets/workshop2/start_color.png)
@@ -338,88 +343,89 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
   - [KeyboardAvoidingView](https://reactnative.dev/docs/keyboardavoidingview) is what you should on pages where the virtual keyboard opens. It moves the content in the view up above the keyboard. This behaviour needs to be slightly different on iOS compared to android so based on the [Platform](https://reactnative.dev/docs/platform) the app is running on. 
   - [TextInput](https://reactnative.dev/docs/textinput) is a component where you can enter text. The `value` is the initial value that the text input has and this updated using the function given to [onChangeText](https://reactnative.dev/docs/textinput#onchangetext).
 
-  ```jsx
-  import { useState } from 'react';
-  import { KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View } from 'react-native';
-  import Button from '../components/button';
+    ```jsx
+    import { useState } from 'react';
+    import { KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View } from 'react-native';
+    import Button from '../components/button';
 
-  export default function TimerInput() {
+    export default function TimerInput(props) {
 
-    const [hours, setHours] = useState('00');
-    const [minutes, setMinutes] = useState('00');
-    const [seconds, setSeconds] = useState('00');
+      const { navigate } = props.navigation
 
-    return (
-      <KeyboardAvoidingView 
-        style={styles.container}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0} >
-          <View style={styles.clock}>
-            <View style={styles.label}>
-              <TextInput
-                onChangeText={value => setHours(value)}
-                value={hours}
-                style={styles.input}
-                keyboardType="numeric"
-                />
-              <Text>Hours</Text>
+      const [hours, setHours] = useState('00');
+      const [minutes, setMinutes] = useState('00');
+      const [seconds, setSeconds] = useState('00');
+
+      return (
+        <KeyboardAvoidingView 
+          style={styles.container}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 70 : 70} >
+            <View style={styles.clock}>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  onChangeText={value => setHours(value)}
+                  value={hours}
+                  style={styles.input}
+                  keyboardType="numeric"
+                  />
+                <Text style={styles.label}>Hours</Text>
+              </View>
             </View>
-          </View>
-          <View style={styles.buttonContainer}>
-            <Button style={% raw %}{{backgroundColor: "#60bd31"}}{% endraw %} title="Start" />
-            <Button title="Reset" />
-          </View>
-      </KeyboardAvoidingView>
-    );
-  }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    clock: {
-      flex: 3,
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexDirection: 'row'
-    },
-    digits: {
-      fontSize: 60
-    },
-    input: {
-      fontSize: 60,
-      borderWidth: 1,
-      borderRadius: 10,
-      width: 80,
-      margin: 5
-    },
-    inputContainer: {
-      alignItems: 'center'
-    },
-    label: {
-      fontSize: 20
-    },
-    buttonContainer: {
-      flex: 2,
-      flexDirection: 'row',
+            <View style={styles.buttonContainer}>
+              <Button 
+                style={% raw %}{{backgroundColor: "#60bd31"}}{% endraw %} 
+                title="Start" />
+              <Button title="Reset" />
+            </View>
+        </KeyboardAvoidingView>
+      );
     }
-  });
+
+    const styles = StyleSheet.create({
+        container: {
+          flex: 1,
+          backgroundColor: '#fff',
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        clock: {
+          flex: 3,
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'row'
+        },
+        digits: {
+          fontSize: 60
+        },
+        input: {
+          fontSize: 60,
+          borderWidth: 1,
+          borderRadius: 10,
+          width: 80,
+          margin: 5
+        },
+        inputContainer: {
+          alignItems: 'center'
+        },
+        label: {
+          fontSize: 20
+        },
+        buttonContainer: {
+          flex: 2,
+          flexDirection: 'row',
+        }
+    });
   ```
 
 2. To see this new screen, import your TimerInput component into App.js and create another Tab.Screen inside Tab.Navigator called Timer. You should get a new a tab called Timer.
-
-![timer nav](../assets/workshop2/timer_nav.png)
+  ![timer nav](../assets/workshop2/timer_nav.png)
 
 3. Use the [MaterialCommunityIcon av-timer component](https://icons.expo.fyi/Index/MaterialCommunityIcons/av-timer) as the icon for the Timer tab.
-
-![timer nav](../assets/workshop2/timer_nav_with_icon.png)
+  ![timer nav](../assets/workshop2/timer_nav_with_icon.png)
 
 4. Now you can see one TextInput, can you add two more TextInputs for hours and minutes so it looks like this.
-
-![timer nav](../assets/workshop2/all_inputs.png)
+  ![timer nav](../assets/workshop2/all_inputs.png)
 
 5. Implement the reset button so that all values are reset to '00' when the reset button is pressed.
 
@@ -429,33 +435,33 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
   export default function Timer() {
   ```
 
-2. In App.js, create a StackNavigator
+2. Import stack navigation: `npx expo install @react-navigation/stack`
 
+3. In App.js, create a StackNavigator
   ```jsx
-  const TimerNav = () => {
-    const Stack = createStackNavigator()
-    return (
-      <Stack.Navigator  screenOptions={% raw %}{{headerShown: false}}{% endraw %}>
-        <Stack.Screen name="TimerInput" component={TimerInput} />
-        <Stack.Screen name="Timer" component={Timer} />
-      </Stack.Navigator>
-    );
-  }
+    const TimerNav = () => {
+      const Stack = createStackNavigator()
+      return (
+        <Stack.Navigator  screenOptions={% raw %}{{headerShown: false}}{% endraw %}>
+          <Stack.Screen name="TimerInput" component={TimerInput} />
+          <Stack.Screen name="Timer" component={Timer} />
+        </Stack.Navigator>
+      );
+    }
   ```
 
-3. Then update the Timer Tab.Screen in TabNav to:
-
-  ```jsx
-  <Tab.Screen 
-    name="TimerNav" 
-    component={TimerNav}
-    options={% raw %}{{
-    tabBarLabel: 'Timer',
-    tabBarIcon: ({ color, size }) => (
-      <MaterialCommunityIcons name="av-timer" color={color} size={size}/>
-    )}}{% endraw %}
-  />
-  ```
+4. Then update the Timer Tab.Screen in TabNav to:
+    ```jsx
+    <Tab.Screen 
+      name="TimerNav" 
+      component={TimerNav}
+      options={% raw %}{{
+      tabBarLabel: 'Timer',
+      tabBarIcon: ({ color, size }) => (
+        <MaterialCommunityIcons name="av-timer" color={color} size={size}/>
+      )}}{% endraw %}
+    />
+    ```
 
 ## Start the Timer!
 1. In Start button, we want to navigate to the Timer page passing the total number of seconds as a param. Remember you'll need to get the navigate function from the props.navigation object.
