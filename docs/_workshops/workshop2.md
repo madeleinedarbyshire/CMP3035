@@ -492,7 +492,7 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
   ```
 
 7. At the moment, the clock will keep counting past 0. Make an _if_ statement in `useEffect` above the counting check to check whether `centisecs <= 0`. The second statement should become and `else if` because we don't want to count more if we've hit 0. When it's equal to 0 or less we will show an Alert that navigates back to the input page. Rememer:
-  - you will need to import Alert like this: `import { Alert, StyleSheet, Text, View } from 'react-native';`
+  - you will need to import [Alert](https://reactnative.dev/docs/alert) like this: `import { Alert, StyleSheet, Text, View } from 'react-native';`
   - you will need to get the navigate function: `const { navigate } = props.navigation`
 
     ```javascript
