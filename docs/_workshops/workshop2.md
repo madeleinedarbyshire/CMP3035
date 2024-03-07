@@ -437,7 +437,7 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
 
 2. Import stack navigation: `npx expo install @react-navigation/stack`
 
-3. In App.js, create a StackNavigator
+3. In App.js, import the Timer function you have just created and create a StackNavigator
   ```jsx
     const TimerNav = () => {
       const Stack = createStackNavigator()
@@ -466,7 +466,7 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
 ## Start the Timer!
 1. In Start button, we want to navigate to the Timer page passing the total number of seconds as a param. Remember you'll need to get the navigate function from the props.navigation object.
   ```javascript
-  onPress={() => navigate('Timer', {seconds : (parseInt(hours) * 3600) + (parseInt(minutes) * 60) + parseInt(seconds)})}
+  onPress={() => navigate("Timer", {seconds : (parseInt(hours) * 3600) + (parseInt(minutes) * 60) + parseInt(seconds)})}
   ```
 
 2. Pressing the Start button at the moment navigates you a page that looks exactly like the stopwatch and the clock counts up like a stopwatch!
@@ -491,7 +491,7 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
   const [isCounting, setStartStop] = useState(true);
   ```
 
-7. So, the clock will keep counting past 0 so make the _if_ statement in `useEffect` an _else if_ above check whether `centisecs <= 0`. When it's equal to 0 or less we will show an Alert that navigates back to the input page. Rememer:
+7. So, the clock will keep counting past 0. Make an _if_ statement in `useEffect` above the counting check to check whether `centisecs <= 0`. The second statement should become and `else if` because we don't want to count more if we've hit 0. When it's equal to 0 or less we will show an Alert that navigates back to the input page. Rememer:
   - you will need to import Alert like this: `import { Alert, StyleSheet, Text, View } from 'react-native';`
   - you will need to get the navigate function: `const { navigate } = props.navigation`
 
