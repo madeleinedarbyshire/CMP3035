@@ -3,7 +3,7 @@ layout: page
 exclude: true
 title: "Workshop 5: Clock App"
 excerpt: "This week we look at how to use React hooks and navigate in React Native"
-permalink: workshops/workshop6
+permalink: workshops/workshop5
 ---
 
 <style type="text/css">
