@@ -94,6 +94,8 @@ permalink: workshops/workshop5
     });
     ```
 
+4. You won't see any changes in your App yet, first we need to add some navigation.
+
 ## Create Bottom Tab Navigation
 1. Install the following libraries for navigation:
     ```
