@@ -344,10 +344,12 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
 1. Next we're implement a timer. First we need to create a Timer Input page. Create a new javascript file _TimerInput.js_ in the _screens_ folder. Start with this code:
   - [KeyboardAvoidingView](https://reactnative.dev/docs/keyboardavoidingview) is what you should on pages where the virtual keyboard opens. It moves the content in the view up above the keyboard. This behaviour needs to be slightly different on iOS compared to android so based on the [Platform](https://reactnative.dev/docs/platform) the app is running on. 
   - [TextInput](https://reactnative.dev/docs/textinput) is a component where you can enter text. The `value` is the initial value that the text input has and this updated using the function given to [onChangeText](https://reactnative.dev/docs/textinput#onchangetext).
+  - [TouchableWithoutFeedback](https://reactnative.dev/docs/touchablewithoutfeedback) this is a pressable component that doesn't give any feedback when pressed. The background can be pressed when the keyboard is open and the keyboard will be closed.
+  - [Keyboard](https://reactnative.dev/docs/keyboard) Keyboard module allows you to listen for native events and react to them, as well as make changes to the keyboard, like dismissing it
 
     ```jsx
     import { useState } from 'react';
-    import { KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View } from 'react-native';
+    import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput,TouchableWithoutFeedback, View } from 'react-native';
     import Button from '../components/button';
 
     export default function TimerInput(props) {
@@ -359,6 +361,11 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
       const [seconds, setSeconds] = useState('00');
 
       return (
+        <TouchableWithoutFeedback 
+            style={% raw %}{{ flex: 1 }}{% endraw %}
+            activeOpacity={1} 
+            onPress={() => Keyboard.dismiss()}
+          >
         <KeyboardAvoidingView 
           style={styles.container}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -373,14 +380,34 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
                   />
                 <Text style={styles.label}>Hours</Text>
               </View>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  onChangeText={value => setMinutes(value)}
+                  value={minutes}
+                  style={styles.input}
+                  keyboardType="numeric"
+                  />
+                <Text style={styles.label}>Minutes</Text>
+              </View>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  onChangeText={value => setSeconds(value)}
+                  value={seconds}
+                  style={styles.input}
+                  keyboardType="numeric"
+                  />
+                <Text style={styles.label}>Seconds</Text>
+              </View>
             </View>
             <View style={styles.buttonContainer}>
               <Button 
-                style={% raw %}{{backgroundColor: "#60bd31"}}{% endraw %} 
-                title="Start" />
-              <Button title="Reset" />
+                style={% raw %}{{backgroundColor: "#60bd31"}}{% endraw %}
+                title="Start"
+                onPress={() => navigate('Timer', {seconds : (parseInt(hours) * 3600) + (parseInt(minutes) * 60) + parseInt(seconds)})} />
+              <Button title="Reset" onPress={() => {setHours('00'), setMinutes('00'), setSeconds('00')}} />
             </View>
         </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
       );
     }
 
@@ -417,8 +444,8 @@ If you don't like this icon, you can choose another one [here](https://icons.exp
           flex: 2,
           flexDirection: 'row',
         }
-    });
-  ```
+      });
+    ```
 
 2. To see this new screen, import your TimerInput component into App.js and create another Tab.Screen inside Tab.Navigator called Timer. You should get a new a tab called Timer.
   ![timer nav](../assets/workshop2/timer_nav.png)
