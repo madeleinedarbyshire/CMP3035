@@ -174,12 +174,11 @@ const styles = StyleSheet.create({
 Yes, that's right, you can insert images straight into your app, just using the URL!
 
 1. Update the `'react-native'` import statement with the [Image](https://reactnative.dev/docs/image) component, so it looks like this:
-
     ```javascript
     import { Image, StyleSheet, Text, View } from 'react-native';
     ```
 
-2. Inside the `View` component, above the `Text` component, in the `TitleBar()` function add the `Image` component with this URL:
+2. Inside the `View` component, above the `Text` component, in the `TitleBar()` function add the `Image` component with this URL.
 
     ```jsx
     <Image source={% raw %}{{uri: 'https://madeleinedarbyshire.github.io/CMP3035/assets/workshop1/avatar.jpeg'}}{% endraw %} />

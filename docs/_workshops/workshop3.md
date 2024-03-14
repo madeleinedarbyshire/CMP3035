@@ -115,7 +115,7 @@ Go back to the app homepage and select the Track option and open _screens/TrackS
 
 2. In the startTracking function, get the watch id from `navigator.geolocation.watchPosition` and set watchID in the setWatchID function.
     ```javascript
-    setWatchID(navigator.geolocation.watchPosition(onGeolocation, onGeolocationError));
+    setWatchID(navigator.geolocation.watchPosition(onGeolocation, onGeolocationError, {}));
     ```
 
 3. Implement the `onGeolocation` function with the following. This is called each time a new position is received. We then update trackingData with the new set of co-ordinates.
