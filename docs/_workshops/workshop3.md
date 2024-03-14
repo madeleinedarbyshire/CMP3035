@@ -28,7 +28,7 @@ git clone https://github.com/madeleinedarbyshire/ReactGeolocationWorkshop.git
 2. Install dependancies
 ```
 cd ReactGeolocationWorkshop/exercise-tracker
-npx expo install
+npm install
 npx expo start --tunnel
 ``` 
 
