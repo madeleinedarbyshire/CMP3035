@@ -14,7 +14,7 @@ npx create-expo-app
 
 2. Name your app something like photobooth.
 
-3. Install Expo.
+3. Install expo ngrok.
 ```
 cd <your-app>
 npm install @expo/ngrok@^4.1.0
