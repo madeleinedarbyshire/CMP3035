@@ -149,7 +149,7 @@ return (
 
 7. Flip the Camera by setting the `type` property to `CameraType.front`.
 
-8. For some of you, you might notice that navigating between the camera screen and the gallery screen and back again means the camera preview doesn't re-render, this is because your camera needs to be unmounted when you navigate away. The easiest fix for this is to just make sure the camera only renders when the screen is in focus. For this we will use the [useIsFocused](https://reactnavigation.org/docs/use-is-focused/) hook from react navigation.
+8. For some of you, you might notice that navigating between the camera screen and the gallery screen and back again means the camera preview doesn't re-render, this is because your camera needs to be unmounted when you navigate away. The easiest fix for this is to just make sure the camera only renders when the screen is in focus. For this we will use the [useIsFocused](https://reactnavigation.org/docs/use-is-focused/) hook from react navigation. Even if you find it works on your device without this, you should still add this.
   - Import it into CameraScreen.js
     ```javascript
     import { useIsFocused } from '@react-navigation/native';
@@ -190,11 +190,11 @@ import * as FileSystem from "expo-file-system";
   - From the information returned by `getInfoAsync` (check the docs), you will be able to check whether the directory exists. If the `PHOTOS_DIR` directory doesn't exist, make it with [FileSystem.makeDirectoryAsync](https://docs.expo.dev/versions/latest/sdk/filesystem/#filesystemmakedirectoryasyncfileuri-options).
     ```javascript
         const ensureDirExists = async () => {
-          const dirInfo = await FileSystem.getInfoAsync(VIDEOS_DIR);
+          const dirInfo = await FileSystem.getInfoAsync(PHOTOS_DIR);
 
           if (!dirInfo.exists) {
             console.log("Photos directory doesn't exist, creating...");
-            await FileSystem.makeDirectoryAsync(VIDEOS_DIR);
+            await FileSystem.makeDirectoryAsync(PHOTOS_DIR);
           }
         };
     ```
@@ -361,14 +361,15 @@ npx expo install expo-media-library
   - From MediaLibrary.requestPermissionsAsync, you will get an object with a `status` attribute and if `status === 'granted'`, write the photo to the camera roll using [MediaLibrary.createAssetAsync](https://docs.expo.dev/versions/latest/sdk/media-library/#medialibrarycreateassetasynclocaluri)
       ```javascript
         const onSave = async () => {
-          console.log(status)
           if (status.granted == true) {
             await MediaLibrary.createAssetAsync(props.route.params.uri);
             alert('Picture Added to Camera Roll')
           }
           else {
             await requestPermission();
-            onSave();
+            if (status.granted != true) {
+              alert('Camera Roll Permission Denied')
+            }
           }
         }
       ```
@@ -376,12 +377,23 @@ npx expo install expo-media-library
 Check your camera roll for your image.
 
 ## Implement the Gallery page
-1. Import Filesystem and define `PHOTOS_DIR` as the same directory you used in Camera at the top of GalleryScreen.js
+1. Import Filesystem and define 
+  ```javascript
+  import * as FileSystem from "expo-file-system";
+  ```
+
+2. Define `PHOTOS_DIR` as the same directory you used in Camera at the top of GalleryScreen function
+  ```javascript
+  const PHOTOS_DIR = FileSystem.documentDirectory + 'CPD_Photos';
+  ```
 
 2. Import useState and define photos and setPhotos at the top of the GalleryScreen function.
-```javascript
-const [photo, setPhotos] = useState([])
-```
+  ```javascript
+  import { useState } from 'react';
+  ```
+  ```javascript
+  const [photo, setPhotos] = useState([])
+  ```
 
 3. Define a new async function `retrievePhotos` and get the contents of `PHOTOS_DIR` and display them in your gallery.
   - Use the function [FileSystem.readDirectoryAsync](https://docs.expo.dev/versions/latest/sdk/filesystem/#filesystemreaddirectoryasyncfileuri) to get the contents of `PHOTOS_DIR`.
@@ -399,12 +411,15 @@ const [photo, setPhotos] = useState([])
 
 4. Call `retrievePhotos` in useEffect so that `retrievePhotos` is called when the page loads.
   ```javascript
+  import { useState, useEffect } from 'react';
+  ```
+  ```javascript
     useEffect(() => {
       retrievePhotos();
     })
   ```
 
-5. Define a new function called `Row` that takes a property called photos. Remember to get the source uri of the photo you need to append `PHOTO_DIR` to the photo name like this `PHOTOS_DIR + '/' + photo`
+5. Define a new function called `Row` that takes a property called photos.
   ```jsx
     const Row = ({ dir, photos }) => {
       return(
@@ -438,7 +453,7 @@ const [photo, setPhotos] = useState([])
     });
     ```
 
-7. Test your row component by returning it from the gallery component. Here we are using the slice finction to give the first three images in our gallery to the Row component:
+7. Test your row component by returning it from the gallery component. Here we are using the slice finction to give the first three images in our gallery to the `Row` component:
   ```jsx
     <View style={styles.container}>
       <Row photos={photos.slice(0, 3)} dir={PHOTOS_DIR}/>
@@ -447,11 +462,11 @@ const [photo, setPhotos] = useState([])
 
 8. In GalleryScreen, make a gallery array with each row like this
   ```jsx
-  const gallery = [];
-  const rowWidth = 3;
-  for (let i = 0; i < (photos.length / rowWidth) + 1; i++) {
-    gallery.push(<Row photos={photos.slice(i*rowWidth, i*rowWidth+rowWidth)} key={i}></Row>)
-  }
+    const gallery = [];
+    const rowWidth = 3;
+    for (let i = 0; i < (photos.length / rowWidth) + 1; i++) {
+      gallery.push(<Row photos={photos.slice(i*rowWidth, i*rowWidth+rowWidth)} key={i}></Row>)
+    }
   ```
 
 8. Render the gallery at the bottom of the GalleryScreen function:
@@ -482,12 +497,11 @@ Style the app as you like.
   - Install [expo-vector-icons](https://www.npmjs.com/package/@expo/vector-icons) and import `MaterialCommunityIcons`, `FontAwesome` or another icon library
   - Choose your prefer icons from [here](https://icons.expo.fyi/)
   - Update the `options` property with a function to 
-
-  ```jsx
-  tabBarIcon: ({ color, size }) => (
-      <MaterialCommunityIcons name="camera" size={24} color="black" />
-  )
-  ```
+      ```jsx
+        tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="camera" size={24} color="black" />
+        )
+      ```
 
 ## Extension 2: Implement the Smile Detector
 Use the [Expo Face Detector](https://docs.expo.dev/versions/latest/sdk/facedetector/) to capture faces and try to implement the smile detector in Camera.js. 
