@@ -374,6 +374,11 @@ npx expo install expo-media-library
         }
       ```
 
+3. Add a button that calls onSave:
+  ```jsx
+    <Button title="Save to Camera Roll" onPress={onSave}/>
+  ```
+
 Check your camera roll for your image.
 
 ## Implement the Gallery page
@@ -491,7 +496,7 @@ You've done it! You've made a Camera app from scratch.
 ## Extension 1: Style Buttons and Tab Bar
 Style the app as you like.
 
-1. Styling the button component in React Native can be a bit limited so instead you might perfer to create a custom component and wrap it in a [TouchableOpacity](https://reactnative.dev/docs/touchableopacity). See an example in the clock-app/components/buttons.js.
+1. Styling the button component in React Native can be a bit limited so instead you might perfer to create a custom component and wrap it in a [TouchableOpacity](https://reactnative.dev/docs/touchableopacity).
 
 2. You can change the icons shown on the TabBar:
   - Install [expo-vector-icons](https://www.npmjs.com/package/@expo/vector-icons) and import `MaterialCommunityIcons`, `FontAwesome` or another icon library
