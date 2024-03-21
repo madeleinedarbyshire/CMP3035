@@ -469,14 +469,14 @@ Check your camera roll for your image.
     }
   ```
 
-8. Render the gallery at the bottom of the GalleryScreen function:
+8. Render the gallery at the bottom of the GalleryScreen function. Make sure you import [ScrollView](https://reactnative.dev/docs/scrollview). 
   ```jsx
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <ScrollView contentContainerStyle={% raw %}{{flexGrow: 1}}{% endraw %}>
           {gallery}
         </ScrollView>
-      </SafeAreaView>
+      </View>
     );
   ```
 
