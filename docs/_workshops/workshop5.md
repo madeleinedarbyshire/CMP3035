@@ -4,7 +4,6 @@ exclude: true
 title: "Workshop 8: CRUD with Firebase"
 excerpt: "Create a Firestore database using Firebase"
 permalink: workshops/workshop8
-hidden: true
 ---
 
 In this workshop, we are going to practice using Firestore.
