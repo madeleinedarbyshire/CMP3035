@@ -17,7 +17,7 @@ npm install @expo/ngrok@^4.1.0
 npx expo start --tunnel
 ```
 
-2. Set up a firestore database following [this guide](/guides/firebase)
+2. Set up a firestore database following [this guide](https://madeleinedarbyshire.github.io/CMP3035/guides/firebase)
 
 3. Select start collection and create a collection called Observations.
     ![Start Collection](../assets/workshop5/start-collection.png)
