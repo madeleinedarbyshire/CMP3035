@@ -1,10 +1,9 @@
 ---
 layout: page
 exclude: true
-title: "Workshop 10: Communicating with Spotify's REST API"
+title: "Workshop 9: Communicating with Spotify's REST API"
 excerpt: "Retrieve album art and song snippets from Spotify's REST API"
-permalink: workshops/workshop10
-hidden: true
+permalink: workshops/workshop9
 ---
 
 ## Setup Spotify Credentials
@@ -22,26 +21,19 @@ hidden: true
 
     ![Register App](../assets/spotify/register.png)
 
-5. From the dashboard, select your app and then go to settings to find your Client ID and Client Secret.
-
-    ![Dashboard](../assets/spotify/dashboard2.png)
-
-    ![Dashboard](../assets/spotify/settings.png)
-
 ## Create App
 1. Create a new app:
 ```
 npx create-expo-app
 ```
 
-2. Name your app something that makes sense when prompted.
+2. Name your app something like album-art or similar when prompted.
 
 3. Install expo and ngrok:
 ```
 cd <your-app>
-npm install expo-cli
 npm install @expo/ngrok@^4.1.0
-npm install @expo/vector-icons
+npx expo install @expo/vector-icons
 ```
 
 4. Run your app, scan the QR code and open in your phone:
@@ -49,94 +41,122 @@ npm install @expo/vector-icons
 npx expo start --tunnel
 ```
 
-5. Copy the components directory from the [GitHub repo](https://github.com/madeleinedarbyshire/CMP3035/tree/main/wk10/components) and add it to the root of your project.
-
-6. Delete the contents of App.js and replace it with:
+5. Delete the contents of App.js and replace it with:
     ```jsx
-    import { Ionicons } from '@expo/vector-icons';
-    import { TextInput, View, SafeAreaView } from 'react-native';
-    import styles from './components/Styles'; 
+    import { MaterialIcons } from '@expo/vector-icons';
+    import { TextInput, View, SafeAreaView, StyleSheet } from 'react-native';
+    import { useState } from 'react';
 
     export default function App() {
-        const [token, setToken] = useState('');
-        return (
-            <SafeAreaView style={styles.container}>
-                <View style={styles.subContainer}> 
-                    <TextInput 
-                        style={styles.input}
-                        placeholder={"Artist Name"}
-                        placeholderTextColor={"#eee"}/>
-                    <Ionicons.Button name="ios-search" style={styles.copy} backgroundColor="#bb1d68" size={22}>
-                    Search Albums
-                    </Ionicons.Button>
-                </View>
-            </SafeAreaView>
-        );
+      const [token, setToken] = useState('');
+      return (
+        <SafeAreaView style={styles.container}>
+          <View style={styles.subContainer}> 
+            <TextInput 
+              style={styles.input}
+              placeholder={"Artist Name"}
+              placeholderTextColor={"#eee"}/>
+            <MaterialIcons.Button name="search" style={styles.copy} backgroundColor="#bb1d68" size={22}>
+            Search Albums
+            </MaterialIcons.Button>
+          </View>
+        </SafeAreaView>
+      );
     }
+
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        padding: 20,
+        backgroundColor: '#010020'
+      },
+      input: {
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+        fontSize: 20,
+        backgroundColor: 'rgba(250, 250, 250, 0.1)',
+        padding: 10,
+        marginBottom: 10,
+        borderRadius: 5
+      },
+      subContainer: {
+        margin: 10
+      }
+    })
     ```
 
 ## Get Token
-1. At the top of the App function add your credentials:
+1. Go to settings in your app's dashboard on the Spotify and retrieve your Client ID and Client Secret.
+
+    ![Dashboard](../assets/spotify/settings.png)
+
+2. At the top of the App function add your credentials:
     ```js
     const client_id = 'your-client-id';
     const client_secret = 'your-client-secret';
     ```
 
-2. Add some state to store the token (remember you will need to import [useState](https://legacy.reactjs.org/docs/hooks-state.html)):
-    ```js
-    const [token, setToken] = useState('');
-    ```
-
-3. Define an async function called getToken() within the App function with a try catch block.
-    ```jsx
-    const getToken = async () => {
-        try {
-        
-        }
-        catch (err) {
-            console.log('Error fetching token:', err)
-        }
-    };
-    ```
-
-4. Call useEffect inside the App function with a function that calls getToken. Remember to import [useEffect](https://legacy.reactjs.org/docs/hooks-effect.html).
-    ```jsx
-    useEffect(() => { 
-        getToken();
-    }, []);
-    ```
-
-5. To get the token, we are going to use Basic authentication your credentials:
+3. To get the token, we are going to use Basic authentication your credentials:
     - Install base-64 libraries:
         ```
-        npm install base-64
+        npx expo install base-64
         ```
     - Import encode from base-64:
         ```js
         import { encode } from 'base-64';
         ```
-    - In getToken, encode your credentials in the format clientID:clientSecret.
+    - Define an async function called getToken() within the App function with a try catch block and a const with your encoded credentials.
       ```js
-      const encodedCredentials = encode(client_id + ':' + client_secret)
+      const getToken = async () => {
+        try {
+          const encodedCredentials = encode(client_id + ':' + client_secret)
+        }
+        catch (err) {
+          console.log("Error fetching data-----------", err);
+        } 
+      };
       ```
 
-6. Using the [fetch(url, options)](https://developer.mozilla.org/en-US/docs/Web/API/fetch) function (no need to import it) to create a POST method to request a token from the url `https://accounts.spotify.com/api/token`. As stated in the [documentation](https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow)*, you will need to provide two headers parameters:
+4. At the top of the App function, add some state to store the token (remember you will need to import [useState](https://legacy.reactjs.org/docs/hooks-state.html)):
+    ```js
+    const [token, setToken] = useState('');
+    ```
+
+5. Using the [fetch(url, options)](https://developer.mozilla.org/en-US/docs/Web/API/fetch) function (no need to import it) to create a POST method to request a token from the url `https://accounts.spotify.com/api/token` inside the try block in getToken. As stated in the [documentation](https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow) (Beware: the JavaScript example in the docs uses a different libraries so don't pay too close attention to this). You will need to provide two headers parameters:
     - `Authorization: Basic <your base64 encoded credentials>`
     - `Content-Type: application/x-www-form-urlencoded`
+  The body should be `'grant-type=client-credentials'`.
+  ```js
+  const response = await fetch(
+    "https://accounts.spotify.com/api/token", 
+    {
+      method: "POST",
+      headers: {Authorization: `Basic ${encodedCredentials}`,
+                "Content-Type": "application/x-www-form-urlencoded",
+                Accept: "application/json"},
+      body: "grant_type=client_credentials"
+    } 
+  );
+  ```
 
-    The body should be `'grant-type=client-credentials'`.
-
-    *Beware: the JavaScript example in the docs uses a different libraries so don't pay too close attention to this.
-
-7. Get the json body from the response you recieve back.
+6. Get the json body from the response you recieve back.
     ```js
     const body = await response.json();
     const accessToken = body.access_token;
     ```
 
-8. Set `accessToken` as the token in the component state.
+7. Set `accessToken` as the token in the component state.
 
-9. Test that you can recieving an access token by logging `accessToken` in `getToken`.
+8. Test that you can recieving an access token by logging `accessToken` in `getToken`.
+
+9. Call useEffect inside the App function with a function that calls getToken. Remember to import [useEffect](https://legacy.reactjs.org/docs/hooks-effect.html).
+  ```jsx
+  useEffect(() => {
+    if (token === '') {
+      getToken();
+    }
+  });
+  ```
 
 ## Implement Album Search
 1. Create some component state called artist to store the name of the artist.
@@ -164,7 +184,7 @@ const [artist, setArtist] = useState('');
 
 5. Get the json body out of the response object. Get album items out of the body: `body.albums.items` and set this to be albums in the state.
 
-6. Add the onPress property to the Ionic.Buttons:
+6. Add the onPress property to the MaterialIcons.Buttons:
 ```jsx
 onPress={searchAlbums}
 ```
@@ -172,33 +192,59 @@ onPress={searchAlbums}
 7. Create a function for displaying an album. You will need import `TouchableHighlight`and `Image` from react-native:
     ```jsx
     const item = ({item}) =>  (
-        <View style={% raw %}{{flex: 1, flexDirection: 'column', margin: 1}}{% endraw %}>
-            <TouchableHighlight>
-            <View>
-                <Image style={styles.imageThumbnail} source={% raw %}{{uri: item.images[1].url}}{% endraw %}/>
-            </View>
-            </TouchableHighlight>
-        </View>
+      <View style={% raw %}{{flex: 1, flexDirection: 'column', margin: 1}}{% endraw %}>
+        <TouchableHighlight>
+          <View>
+            <Image style={styles.imageThumbnail} source={% raw %}{{uri: item.images[1].url}}{% endraw %}/>
+          </View>
+        </TouchableHighlight>
+      </View>
     );
     ```
 
-8. In the App return function, underneath `View` (subContainer), add the following JSX inside `SafeAreaView`. Remember to import Text and FlatList from react-native. You will see your albums displayed.
-```jsx
-    <View style={styles.mainContainer}>
-    {
-        albums.length == 0 &&
-        <Text style={% raw %}{{padding: 10, color: 'white', marginTop: 30, fontSize: 22}}{% endraw %}>
-        Type artist name to retrieve album list.
-        </Text>
+8. Add some styling:
+  - Import [Dimensions](https://reactnative.dev/docs/dimensions) from react-native.
+
+  - Get the height and width of the device's screen:
+    ```js
+    const { height, width } = Dimensions.get('window');
+    ```
+  - Define imageThumbnail in styles:
+    ```js
+    imageThumbnail: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: width / 2
     }
-    <FlatList 
-        data={albums}
-        renderItem={item}
-        keyExtractor={item.id}
-        numColumns={2}
-    />
-    </View>
-```
+    ```
+
+
+8. In the App return function, underneath `View` (subContainer), add the following JSX inside `SafeAreaView`. Remember to import Text and FlatList from react-native. You will see your albums displayed.
+  ```jsx
+      <View style={styles.mainContainer}>
+      {
+          albums.length == 0 &&
+          <Text style={% raw %}{{padding: 10, color: 'white', marginTop: 30, fontSize: 22}}{% endraw %}>
+            Type artist name to retrieve album list.
+          </Text>
+      }
+      <FlatList 
+          data={albums}
+          renderItem={item}
+          keyExtractor={item.id}
+          numColumns={2}
+      />
+      </View>
+  ```
+
+9. Add some styling for the container:
+  ```js
+  mainContainer: {
+    justifyContent: 'center',
+    flex: 1,
+    paddingTop: 0
+  }
+  ```
 
 9. Test by searching for an Artist and seeing their albums.
 
@@ -206,7 +252,7 @@ onPress={searchAlbums}
 When the user presses an album image, a preview of that album should play. First, we need to set up audio.
 1. Install expo-av:
 ```
-npm install expo-av
+npx expo install expo-av
 ```
 
 2. Import `Audio`
@@ -230,16 +276,20 @@ const setAudio = () => {
 
 4. Call the function inside useEffect:
     ```js
-    useEffect(() => { 
+    useEffect(() => {
+      if (token === '') {
         getToken();
-        setAudio();
-    }, []);
+      }
+      setAudio();
+    });
     ```
 
 ## Fetch Tracks
 1. Set the onPress property to call a function called `fetchTracks` with the `item.id` when the album image is pressed.
 
-2. Define the function `fetchTracks` that takes an album id as a parameter. Use fetch to get the album from the [album endpoint](https://developer.spotify.com/documentation/web-api/reference/get-an-album) (`https://api.spotify.com/v1/albums/{id}`). Set the market parameter to GB. This is a GET method, use the Accept header to request the content in json format and use Bearer authorization in the Authorization header.
+2. Define the function `fetchTracks` that takes an album id as a parameter. Use fetch to get the album from the [album endpoint](https://developer.spotify.com/documentation/web-api/reference/get-an-album) (`https://api.spotify.com/v1/albums/{id}`). Set the market parameter to GB. This is a GET method and the headers are:
+    - `Accept: application/json`
+    - `Authorization: Bearer <your-access-token>`
 
 3. Get the body from the response. Remember to import Alert from react-native.
 ```js
