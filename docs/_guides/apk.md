@@ -24,7 +24,12 @@ npx expo login -u your-username -p your-password
 eas build -p android --profile preview
 ```
 
-3. Download the apk from your expo profile. Make sure you test your apk file to see if it works! You have a limited number of builds so if it doesn't work follow the steps below and make sure you have resolved all the problems before retrying the build.
+4. It might ask you to sign in with git and create a git repository, if you would like to try building without git set the environment variable `EAS_NO_VCS` as follows:
+```
+$Env:EAS_NO_VCS=1
+```
+
+5. Download the apk from your expo profile. Make sure you test your apk file to see if it works! You have a limited number of builds so if it doesn't work follow the steps below and make sure you have resolved all the problems before retrying the build.
 
 ## Troubleshooting
 Your app might run fine in expo but when you build it you might find that it doesn't run.
