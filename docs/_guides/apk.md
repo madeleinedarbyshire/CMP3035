@@ -6,6 +6,7 @@ permalink: guides/apk
 hidden: true
 ---
 
+## Create an .apk
 For your assignment, you will need to generate an .apk file.
 
 1. You need to install eas-cli
@@ -23,6 +24,24 @@ npx expo login -u your-username -p your-password
 eas build -p android --profile preview
 ```
 
-3. Download the apk from your expo profile. Make sure you test your apk file to see if it works!
+3. Download the apk from your expo profile. Make sure you test your apk file to see if it works! You have a limited number of builds so if it doesn't work follow the steps below and make sure you have resolved all the problems before retrying the build.
+
+## Troubleshooting
+Your app might run fine in expo but when you build it you might find that it doesn't run.
+
+### Dependencies
+1. Try running `npx expo install --fix` to fix any incompatible dependencies.
+
+2. If that does work try running `npx expo doctor` and resolve any issues flagged.
+
+### Google
+1. Although maps works in development without a key, you need to include a key in your app.json for your built version to work.
+
+2. You will also need to register your app with that key in the Google Cloud console. In your project, type `eas credentials` to get the Application identifier and SHA1. Go to the Google cloud console go to the key you created, under restrict android app click add and paste these into the pop up.
+
+    ![Android Restrictions Package Name](../assets/gmaps/packagename.png)
+
+### Other APIs
+If you're apps are not working, or certain screen are not working. It could be that you need to take a similar approach for other APIs you are using and you need to check the API documentation. 
 
 
