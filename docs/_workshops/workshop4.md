@@ -135,7 +135,7 @@ import * as FileSystem from "expo-file-system";
 
 5. Call `requestCameraPermissions` in useEffect
 ```jsx
-useEffect(() => requestCameraPermissions())
+useEffect({() => requestCameraPermissions(); })
 ```
 
 6. Render the Camera at the bottom of the cameraScreen function.
